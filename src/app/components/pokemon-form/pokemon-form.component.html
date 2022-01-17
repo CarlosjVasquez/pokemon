@@ -1,0 +1,151 @@
+<div class="card p-3">
+  <div class="row">
+    <div class="col-12`">
+      <h6 class="text-center text-secondary">{{ title }}</h6>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-6">
+      <div class="mb-3 row justify-content-center">
+        <label for="name" class="col-sm-2 col-form-label"> Nombre: </label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control zone-input"
+            [ngClass]="{ error: pokemon_data.name === '' }"
+            id="name"
+            [(ngModel)]="pokemon_data.name"
+            (keypress)="validateInput($event, 'letter')"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="mb-3 row justify-content-center">
+        <label for="attack" class="col-sm-2 col-form-label">Ataque:</label>
+        <span class="col-sm-1 d-flex align-items-center">{{
+          pokemon_data.attack
+        }}</span>
+        <div
+          class="col-sm-5 align-items-center d-flex flex-row justify-content-between"
+        >
+          <span>0</span>
+          <input
+            type="range"
+            placeholder="url"
+            class="form-range zone-input"
+            id="attack"
+            [(ngModel)]="pokemon_data.attack"
+          />
+          <span>100</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="mb-3 row justify-content-center">
+        <label for="image" class="col-sm-2 col-form-label">Imagen:</label>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            class="form-control zone-input"
+            id="image"
+            [ngClass]="{
+              error: validateUrl === false && pokemon_data.image !== null
+            }"
+            placeholder="url"
+            [(ngModel)]="pokemon_data.image"
+            (input)="validateInput($event, 'url')"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="mb-3 row justify-content-center">
+        <label for="defense" class="col-sm-2 col-form-label">Defensa:</label>
+        <span class="col-sm-1 d-flex align-items-center">{{
+          pokemon_data.defense
+        }}</span>
+        <div
+          class="col-sm-5 align-items-center d-flex flex-row justify-content-between"
+        >
+          <span>0</span>
+          <input
+            type="range"
+            class="form-range zone-input"
+            id="defense"
+            [(ngModel)]="pokemon_data.defense"
+          />
+          <span>100</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-6">
+      <div class="mb-3 row justify-content-center">
+        <label for="type" class="col-sm-2 col-form-label">Tipo:</label>
+        <div class="col-sm-6">
+          <select
+            class="form-select zone-input"
+            aria-label="Default select example"
+            id="type"
+            [(ngModel)]="pokemon_data.type"
+          >
+            <option value="normal" selected>Normal</option>
+            <option value="fire">Fire</option>
+            <option value="water">water</option>
+            <option value="bug">Bug</option>
+            <option value="poison">Poison</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="mb-3 row justify-content-center">
+        <label for="hp" class="col-sm-2 col-form-label">Vida:</label>
+        <span class="col-sm-1 d-flex align-items-center">{{
+          pokemon_data.hp
+        }}</span>
+        <div
+          class="col-sm-5 align-items-center d-flex flex-row justify-content-between"
+        >
+          <span>0</span>
+          <input
+            type="range"
+            class="form-range zone-input"
+            id="hp"
+            [(ngModel)]="pokemon_data.hp"
+          />
+          <span>100</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <pokemon-button
+        [text]="'Guardar'"
+        [icon]="'bi-save'"
+        (handleClick)="save_data.emit(pokemon_data)"
+        [disabled]="
+          (!pokemon_data.name ||
+            !pokemon_data.attack ||
+            !pokemon_data.image ||
+            !pokemon_data.defense ||
+            !pokemon_data.hp ||
+            !validateUrl) &&
+          !(validateUrl === null && pokemon_data.image)
+        "
+      ></pokemon-button>
+    </div>
+    <div class="col-auto">
+      <pokemon-button
+        [text]="'Cancelar'"
+        [icon]="'bi-x-lg'"
+        (handleClick)="cancel.emit()"
+      ></pokemon-button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<table aria-describedby="Tabla de Pokemons" class="table table-bordered my-4">
+  <thead>
+    <tr>
+      <th class="text-center" scope="col">Nombre</th>
+      <th class="text-center" scope="col">Imagen</th>
+      <th class="text-center" scope="col">Ataque</th>
+      <th class="text-center" scope="col">Defensa</th>
+      <th class="text-center" scope="col">Tipo</th>
+      <th class="text-center" scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pokemon of data">
+      <td class="text-center">{{ pokemon.name }}</td>
+      <td class="text-center">
+        <picture>
+          <img
+            [src]="pokemon.image"
+            alt="imagen del pokemon"
+            class="img-pokemon"
+          />
+        </picture>
+      </td>
+      <td>{{ pokemon.attack }}</td>
+      <td>{{ pokemon.defense }}</td>
+      <td>{{ pokemon.type }}</td>
+      <td>
+        <div class="d-flex justify-content-around">
+          <i
+            aria-hidden="true"
+            class="bi bi-pencil-square text-primary icon"
+            (click)="edit.emit(pokemon)"
+          ></i>
+          <i
+            aria-hidden="true"
+            class="bi bi-trash text-primary icon"
+            (click)="delete.emit(pokemon)"
+          ></i>
+        </div>
+      </td>
+    </tr>
+    <tr *ngIf="data.length === 0">
+      <td colspan="6" class="text-secondary text-center">No hay data</td>
+    </tr>
+  </tbody>
+</table>
