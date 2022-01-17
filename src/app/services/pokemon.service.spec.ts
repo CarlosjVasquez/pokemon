@@ -163,7 +163,7 @@ describe('PokemonService', () => {
     req.flush(mockPokemon);
   });
 
-  it('Actualizar pokemon', () => {
+  it('Eliminar pokemon', () => {
     const mockPokemon: IPokemon = {
       id: 517,
       name: 'Pyroars',

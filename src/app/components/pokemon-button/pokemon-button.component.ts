@@ -6,8 +6,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./pokemon-button.component.sass'],
 })
 export class PokemonButtonComponent {
-  @Input() text: string = 'Click';
-  @Input() icon: string | null = null;
-  @Input() disabled: boolean = false;
-  @Output() handleClick: EventEmitter<any> = new EventEmitter();
+  @Input() text: string;
+  @Input() icon: string | null;
+  @Input() disabled: boolean;
+  @Output() handleClick: EventEmitter<any>;
+
+  constructor(){
+    this.text = 'Click'
+    this.icon = null
+    this.disabled = false
+    this.handleClick = new EventEmitter()
+  }
 }

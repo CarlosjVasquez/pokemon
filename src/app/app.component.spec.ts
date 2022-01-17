@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { PokemonService } from './services/pokemon.service';
-import { IPokemon } from './models/ipokemon';
 
 describe('AppComponent', () => {
   let app: AppComponent;

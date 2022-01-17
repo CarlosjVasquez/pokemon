@@ -21,6 +21,7 @@
               placeholder="Buscar"
               aria-label="buscar"
               aria-describedby="addon-wrapping"
+              (keypress)="validateInput($event)"
               (input)="searchPokemon()"
               id="text_search"
               [(ngModel)]="search_text"

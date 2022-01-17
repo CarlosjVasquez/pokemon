@@ -8,16 +8,25 @@ import { PokemonService } from './services/pokemon.service';
   styleUrls: ['./app.component.sass'],
 })
 export class AppComponent implements OnInit {
-  search_text: string = '';
-  data: IPokemon[] = [];
-  data_search: IPokemon[] = [];
-  add_pokemon: boolean = false;
-  update_pokemon: boolean = false;
-  title_form: string = '';
-  pokemon_data: IPokemon = new IPokemon();
-  loading: boolean = false;
+  search_text: string;
+  data: IPokemon[];
+  data_search: IPokemon[];
+  add_pokemon: boolean;
+  update_pokemon: boolean;
+  title_form: string;
+  pokemon_data: IPokemon;
+  loading: boolean;
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService) {
+    this.search_text = '';
+    this.data = [];
+    this.data_search = [];
+    this.add_pokemon = false;
+    this.update_pokemon = false;
+    this.title_form = '';
+    this.pokemon_data = new IPokemon();
+    this.loading = false;
+  }
 
   ngOnInit(): void {
     this.getPokemons();
@@ -92,5 +101,12 @@ export class AppComponent implements OnInit {
       console.log(error);
     }
     this.loading = false;
+  }
+
+  validateInput(event: any) {
+    return (
+      (event.charCode >= 65 && event.charCode <= 90) ||
+      (event.charCode >= 97 && event.charCode <= 122)
+    );
   }
 }

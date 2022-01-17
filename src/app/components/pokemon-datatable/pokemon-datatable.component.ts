@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IPokemon } from '../../models/ipokemon';
 
 @Component({
@@ -6,12 +6,14 @@ import { IPokemon } from '../../models/ipokemon';
   templateUrl: './pokemon-datatable.component.html',
   styleUrls: ['./pokemon-datatable.component.sass'],
 })
-export class PokemonDatatableComponent implements OnInit {
-  @Input() data: IPokemon[] = [];
-  @Output() edit: EventEmitter<any> = new EventEmitter();
-  @Output() delete: EventEmitter<any> = new EventEmitter();
+export class PokemonDatatableComponent {
+  @Input() data: IPokemon[];
+  @Output() edit: EventEmitter<any>;
+  @Output() delete: EventEmitter<any>;
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  constructor() {
+    this.data = [];
+    this.edit = new EventEmitter();
+    this.delete = new EventEmitter();
+  }
 }

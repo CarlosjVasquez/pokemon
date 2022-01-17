@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IPokemon } from '../../models/ipokemon';
 
 @Component({
@@ -6,16 +6,20 @@ import { IPokemon } from '../../models/ipokemon';
   templateUrl: './pokemon-form.component.html',
   styleUrls: ['./pokemon-form.component.sass'],
 })
-export class PokemonFormComponent implements OnInit {
-  @Input() title: string = '';
-  @Input() pokemon_data: IPokemon = new IPokemon();
-  @Output() save_data: EventEmitter<any> = new EventEmitter();
-  @Output() cancel: EventEmitter<any> = new EventEmitter();
-  validateUrl: boolean | null = null;
+export class PokemonFormComponent {
+  @Input() title: string;
+  @Input() pokemon_data: IPokemon;
+  @Output() save_data: EventEmitter<any>;
+  @Output() cancel: EventEmitter<any>;
+  validateUrl: boolean | null;
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  constructor() {
+    this.title = '';
+    this.pokemon_data = new IPokemon();
+    this.save_data = new EventEmitter();
+    this.cancel = new EventEmitter();
+    this.validateUrl = null;
+  }
 
   validateInput(event: any, type: string) {
     let urlregex = new RegExp(/^(ftp|http|https):\/\/[^ "]+$/);

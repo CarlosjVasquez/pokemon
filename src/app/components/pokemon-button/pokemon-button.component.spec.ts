@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PokemonButtonComponent } from './pokemon-button.component';
 
 describe('PokemonButtonComponent', () => {
@@ -18,7 +17,7 @@ describe('PokemonButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('button create', () => {
+  it('Creación de botón', () => {
     expect(component).toBeTruthy();
   });
 });

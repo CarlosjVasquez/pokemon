@@ -16,6 +16,7 @@
             id="name"
             [(ngModel)]="pokemon_data.name"
             (keypress)="validateInput($event, 'letter')"
+            maxlength="50"
           />
         </div>
       </div>
@@ -57,6 +58,7 @@
             placeholder="url"
             [(ngModel)]="pokemon_data.image"
             (input)="validateInput($event, 'url')"
+            maxlength="150"
           />
         </div>
       </div>
